@@ -3,8 +3,8 @@
 Extract modelling parameters from experimental IV curves at STC using the one-diode moodel.
 Works both for PV cells and modules
 
-Main author(s)     : Elena K.
-Contributor(s): Chantal B., Karl B.
+Main author(s)     : Elena Koubli
+Contributor(s): Chantal Birkinshaw, Karl Bedrich
 
 
 NOTE 1: At the moment fitting is based on the particular optimisation algorithm and its inherent error criterion alone 
