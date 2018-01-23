@@ -4,8 +4,8 @@ Extract modelling parameters from experimental IV curves at STC using the one-di
 Works both for PV cells and modules
 
 Main author(s)     : Elena Koubli
-Contributor(s): Chantal Birkinshaw, Karl Bedrich
 
+Test files by Michael-Owen Bellini (c-Si mini module) and Francesco Bittau (CdTe cell)
 
 NOTE 1: At the moment fitting is based on the particular optimisation algorithm and its inherent error criterion alone 
 and no extra error criterion is added here. 
