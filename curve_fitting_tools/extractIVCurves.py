@@ -217,18 +217,17 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
         
 
     # here you can change the styles in the graph - check the top of the module
-    sns.set_style({'font.family':'serif', 'font.serif':'Trebuchet MS', 'text.color': '#6B33FF'})
+    sns.set_style({'font.family':'serif', 'font.serif':'Trebuchet MS', 'text.color': '#6B33FF', 'font.size':14})
    
-    #  see plotGraphs for more info about this function - lots of options can be found here
-    plotDynGraphsOnXY(v,[i_sim,I_points],legends=['Simulation','Experimental'],
-                      axlabels=['Voltage (V)','Current (A)'],
-                      marker_line=True, title = None,
-                      prefs={'leg_layout':'vertical','leg_loc':'best',
-                      'fformat':'jpg', 'bg_colour':'#F5EEF8'}, show_grid=True,
-                      save_graph=False,
-                      show =True)
-                      
-   
+    # also see plotGraphs for more info about my custom made function with lots of options that can be found there
+
+    plt.plot(v,i_sim,'b--',label = 'Simulated IV')
+    plt.plot(v,I_points,'gp', label = 'Experimental IV')
+    plt.xlabel('Voltage(V)')
+    plt.ylabel('Current (A)')
+    plt.legend()
+    plt.show()
+            
   
 
 
