@@ -1,8 +1,4 @@
-'''
-Created on 12 Oct 2016
 
-@author: elek2
-'''
 """
 Created on Tue Oct 11 12:26:25 2016
 
