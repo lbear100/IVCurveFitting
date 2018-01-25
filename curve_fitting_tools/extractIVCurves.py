@@ -131,7 +131,12 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
     
     #starting point for voltage
     indexV=np.where(min(np.abs(I_points))==np.abs(I_points))
-    V_zero=float(V_points[indexV[0]])
+
+    if len(indexV[0]>1.0):
+        V_zero = float(V_points[indexV[0][0]])
+
+    else:
+        V_zero = float(V_points[indexV[0]]) #need to resolve when after the absolute you get two values corresponding to minimum voltage
     
     
     # setting guess values    
@@ -241,11 +246,12 @@ f1 = os.path.join(os.getcwd(),'Test Files//FBinput_iv.csv')
 
 f2 = os.path.join(os.getcwd(),'Test Files//iv_compare_mini_moduleMOB.csv')
 
+f3 = os.path.join(os.getcwd(),'Test Files//test-box00063_D4_1.csv')
 
 # This command runs the module
 if __name__=='__main__':
     
-    main(f2,cells_in_series=6, columns=['V','I'], output_file=None)
+    main(f3,cells_in_series=1, columns=['V','I'], output_file=None)
     
 
 
