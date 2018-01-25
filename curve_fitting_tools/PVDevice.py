@@ -129,7 +129,7 @@ class PVDevice(object):
     def get5params(self):
         
         
-        print('Rshunt: '+str(round(self.Rsh,6))+ '\nRseries: '+str(round(self.Rs,6))+
+        print('Rshunt: '+str(round(self.Rsh,6))+ '\nRseries: '+str((self.Rs))+
               '\nn: '+str(round(self.n,2)) + '\nIph: '+str(round(self.IL,3)) +
               '\nIo: '+str(self.I0) +' and with number of cells: '+ 
               str(self.Ns))
