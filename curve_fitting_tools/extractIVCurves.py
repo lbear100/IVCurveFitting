@@ -13,8 +13,9 @@ and no extra error criterion is added here.
 NOTE 2:The trust-region optimisation has been found to outperform Levenberg-Marquardt 
 in terms of convergence rates and succession and therefore it may be used without an extra error criterion (such area).
 
+NOTE 3: The algorithm does take the IV as positive in the first quadrant not 
 
-NOTE 3: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
+NOTE 4: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
 
 
 
@@ -140,7 +141,7 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
     
     
     # setting guess values    
-    guess_values ={'Iph':I_zero, 'I0':1E-8, 'Rs':0.01, 'Rsh':200, 'n':1}#,'abr':0.1,'m':1,'Vbr':-3*V_zero}
+    guess_values ={'Iph':I_zero, 'I0':1E-8, 'Rs':0.01, 'Rsh':200, 'n':1,'abr':0.01,'m':1,'Vbr':-3*V_zero}
     
     
         
@@ -226,6 +227,7 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
    
     # also see plotGraphs for more info about my custom made function with lots of options that can be found there
 
+    
     plt.plot(v,i_sim,'b--',label = 'Simulated IV')
     plt.plot(v,I_points,'gp', label = 'Experimental IV')
     plt.xlabel('Voltage(V)')
@@ -246,12 +248,11 @@ f1 = os.path.join(os.getcwd(),'Test Files//FBinput_iv.csv')
 
 f2 = os.path.join(os.getcwd(),'Test Files//iv_compare_mini_moduleMOB.csv')
 
-f3 = os.path.join(os.getcwd(),'Test Files//test-box00063_D4_1.csv')
 
 # This command runs the module
 if __name__=='__main__':
     
-    main(f3,cells_in_series=1, columns=['V','I'], output_file=None)
+    main(f2,cells_in_series=6, columns=['V','I'], output_file=None)
     
 
 
