@@ -132,11 +132,11 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
     #starting point for voltage
     indexV=np.where(min(np.abs(I_points))==np.abs(I_points))
 
-    if len(indexV[0]>1.0):
+    if len(indexV[0]>1.0): #need to resolve when after the absolute you get two values corresponding to minimum voltage
         V_zero = float(V_points[indexV[0][0]])
 
     else:
-        V_zero = float(V_points[indexV[0]]) #need to resolve when after the absolute you get two values corresponding to minimum voltage
+        V_zero = float(V_points[indexV[0]]) 
     
     
     # setting guess values    
