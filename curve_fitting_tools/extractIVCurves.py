@@ -13,10 +13,13 @@ and no extra error criterion is added here.
 NOTE 2:The trust-region optimisation has been found to outperform Levenberg-Marquardt 
 in terms of convergence rates and succession and therefore it may be used without an extra error criterion (such area).
 
-NOTE 3: The algorithm does take the IV as positive in the first quadrant not 
+NOTE 3: The algorithm does take the IV as positive in the first quadrant. The algorithm returns best results if the supplied IV curves 
+have more points in the *positive* voltage part than at negative voltage (towards breakdown). In the next update there will be an option 
+to remove the negative part.Check the test files for your information.
 
 NOTE 4: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
 
+Happy extraction!
 
 
 '''
