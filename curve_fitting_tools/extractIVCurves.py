@@ -19,6 +19,8 @@ to remove the negative part.Check the test files for your information.
 
 NOTE 4: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
 
+NOTE 5: Author is grateful for any feedback/forking provided.
+
 Happy extraction!
 
 
