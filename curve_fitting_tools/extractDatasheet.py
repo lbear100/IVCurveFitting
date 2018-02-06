@@ -4,7 +4,7 @@ Created on Tue Oct 11 12:26:25 2016
 
 @author: Elena Koumpli
 
-Parameter extraction from manufacturer's datasheets 
+Parameter extraction from manufacturer's datasheets. A test file is provided for different panels. 
 
 
 Reference:
