@@ -4,8 +4,8 @@ Extract modelling parameters from experimental IV curves at STC using the one-di
 Works both for PV cells and modules
 
 Main author(s)     : Elena Koubli
-Contributor(s): Chantal Birkinshaw, Karl Bedrich
 
+Test files by Michael-Owen Bellini (c-Si mini module) and Francesco Bittau (CdTe cell)
 
 NOTE 1: At the moment fitting is based on the particular optimisation algorithm and its inherent error criterion alone 
 and no extra error criterion is added here. 
@@ -13,9 +13,15 @@ and no extra error criterion is added here.
 NOTE 2:The trust-region optimisation has been found to outperform Levenberg-Marquardt 
 in terms of convergence rates and succession and therefore it may be used without an extra error criterion (such area).
 
+NOTE 3: The algorithm does take the IV as positive in the first quadrant. The algorithm returns best results if the supplied IV curves 
+have more points in the *positive* voltage part than at negative voltage (towards breakdown). In the next update there will be an option 
+to remove the negative part.Check the test files for your information.
 
-NOTE 3: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
+NOTE 4: For seaborn graph styles check some options here: https://github.com/mwaskom/seaborn/issues/672
 
+NOTE 5: Author is grateful for any feedback/forking provided.
+
+Happy extraction!
 
 
 '''
@@ -131,11 +137,16 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
     
     #starting point for voltage
     indexV=np.where(min(np.abs(I_points))==np.abs(I_points))
-    V_zero=float(V_points[indexV[0]])
+
+    if len(indexV[0]>1.0): #need to resolve when after the absolute you get two values corresponding to minimum voltage
+        V_zero = float(V_points[indexV[0][0]])
+
+    else:
+        V_zero = float(V_points[indexV[0]]) 
     
     
     # setting guess values    
-    guess_values ={'Iph':I_zero, 'I0':1E-8, 'Rs':0.01, 'Rsh':200, 'n':1}#,'abr':0.1,'m':1,'Vbr':-3*V_zero}
+    guess_values ={'Iph':I_zero, 'I0':1E-8, 'Rs':0.01, 'Rsh':200, 'n':1,'abr':0.01,'m':1,'Vbr':-3*V_zero}
     
     
         
@@ -217,18 +228,18 @@ def main(input_file,cells_in_series,columns=['V','I'], output_file=None):
         
 
     # here you can change the styles in the graph - check the top of the module
-    sns.set_style({'font.family':'serif', 'font.serif':'Trebuchet MS', 'text.color': '#6B33FF'})
+    sns.set_style({'font.family':'serif', 'font.serif':'Trebuchet MS', 'text.color': '#6B33FF', 'font.size':14})
    
-    #  see plotGraphs for more info about this function - lots of options can be found here
-    plotDynGraphsOnXY(v,[i_sim,I_points],legends=['Simulation','Experimental'],
-                      axlabels=['Voltage (V)','Current (A)'],
-                      marker_line=True, title = None,
-                      prefs={'leg_layout':'vertical','leg_loc':'best',
-                      'fformat':'jpg', 'bg_colour':'#F5EEF8'}, show_grid=True,
-                      save_graph=False,
-                      show =True)
-                      
-   
+    # also see plotGraphs for more info about my custom made function with lots of options that can be found there
+
+    
+    plt.plot(v,i_sim,'b--',label = 'Simulated IV')
+    plt.plot(v,I_points,'gp', label = 'Experimental IV')
+    plt.xlabel('Voltage(V)')
+    plt.ylabel('Current (A)')
+    plt.legend()
+    plt.show()
+            
   
 
 

@@ -1,6 +1,6 @@
 '''
-This module contains useful functions 
-for plotting simple  2D,3D graphs, contours and histograms
+This module contains a useful wrapper function 
+for plotting simple  2D graphs with multiple y axis series
 of higher quality than excel and exporting them at .tiff or .eps etc
 
 Author: Elena Koumpli
@@ -18,12 +18,9 @@ from scipy.stats import linregress
 from tkinter import filedialog, Tk
 
 
-
-
 rcParams.update({'figure.autolayout': True}) #very important command for sizing automatically
 rcParams['mathtext.default'] = 'regular' # this one removes the italics from inserted functions
 
-savefolder = r'C:\Users\elek2_backup\Helena\DATA_WORKSPACES\matplotlib_savefolder'
 
 # the following expression works with the 3.0 interpreter
 
